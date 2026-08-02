@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hitster – Italo Disco Classics</title>
+
+<style>
+body {
+    margin: 0;
+    background: linear-gradient(180deg, #16002b, #050014);
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.container {
+    padding: 40px 20px;
+}
+
+h1 {
+    color: #ff4fd8;
+    text-shadow: 0 0 15px #ff4fd8;
+}
+
+.card {
+    margin: 30px auto;
+    max-width: 350px;
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 0 25px #00ffff;
+}
+
+button {
+    background: #00ffff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.hidden {
+    display:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎵 Hitster<br>Italo Disco Classics</h1>
+
+<div class="card">
+
+<h2>▶️ Song starten</h2>
+
+<p>Scanne deine Karte und spiele den Titel ab.</p>
+
+<button onclick="showAnswer()">
+Lösung anzeigen
+</button>
+
+<div id="answer" class="hidden">
+<hr>
+<h3>Ryan Paris</h3>
+<p>Dolce Vita</p>
+<p>1983</p>
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+function showAnswer(){
+document.getElementById("answer").style.display="block";
+}
+</script>
+
+</body>
+</html>
