@@ -1,52 +1,245 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Hitster – Italo Disco Classics</title>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+
 body {
-    margin:0;
-    background:
-    linear-gradient(#14002b,#020014);
-    color:white;
-    font-family:Arial,sans-serif;
-    text-align:center;
+
+margin:0;
+min-height:100vh;
+
+background:
+linear-gradient(
+180deg,
+#14002b 0%,
+#090022 45%,
+#02000d 100%
+);
+
+color:white;
+font-family:'Orbitron', Arial, sans-serif;
+text-align:center;
+
+overflow-x:hidden;
+
 }
+
+
+/* Neon Sonnenuntergang */
+
+body:before {
+
+content:"";
+
+position:fixed;
+
+bottom:0;
+left:0;
+
+width:100%;
+height:45%;
+
+background:
+linear-gradient(
+transparent,
+rgba(255,0,180,0.25)
+);
+
+z-index:-1;
+
+}
+
+
+/* Titel */
 
 h1 {
-    color:#ff4fd8;
-    text-shadow:0 0 20px #ff4fd8;
+
+font-size:32px;
+
+color:#ff4fd8;
+
+text-shadow:
+
+0 0 5px #ff4fd8,
+0 0 15px #ff4fd8,
+0 0 30px #00ffff;
+
 }
+
+
+/* Karte */
+
 
 .card {
-    margin:40px auto;
-    max-width:380px;
-    padding:25px;
-    border-radius:25px;
-    background:rgba(255,255,255,0.1);
-    box-shadow:
-    0 0 25px #00ffff;
+
+width:330px;
+
+margin:40px auto;
+
+padding:30px;
+
+border-radius:25px;
+
+
+background:
+
+linear-gradient(
+135deg,
+rgba(255,255,255,0.12),
+rgba(255,255,255,0.03)
+);
+
+
+border:2px solid #00ffff;
+
+
+box-shadow:
+
+0 0 15px #00ffff,
+0 0 35px #ff00cc;
+
+
+backdrop-filter:blur(10px);
+
+
 }
+
+
+/* Neon Buttons */
+
 
 button {
-    background:#00ffff;
-    border:0;
-    padding:15px 30px;
-    border-radius:30px;
-    font-size:18px;
+
+font-family:'Orbitron';
+
+background:
+
+linear-gradient(
+90deg,
+#00ffff,
+#ff00cc
+);
+
+
+border:none;
+
+padding:15px 25px;
+
+border-radius:50px;
+
+font-size:16px;
+
+cursor:pointer;
+
+box-shadow:
+
+0 0 15px #00ffff;
+
+
 }
+
+
+
+button:hover {
+
+transform:scale(1.08);
+
+}
+
+
+
+/* Spotify */
+
+.spotify {
+
+
+display:inline-block;
+
+margin:20px;
+
+
+}
+
+
+
+/* Lösung */
+
 
 .answer {
-    display:none;
-    margin-top:20px;
+
+display:none;
+
+margin-top:25px;
+
+border-top:
+
+1px solid #ff00cc;
+
+padding-top:20px;
+
+
+color:#ffff00;
+
+
 }
 
-a {
-    color:#ffff00;
+
+
+/* Retro Grid */
+
+
+.grid {
+
+
+position:fixed;
+
+bottom:0;
+
+left:0;
+
+width:100%;
+
+height:120px;
+
+
+background:
+
+linear-gradient(
+90deg,
+transparent 95%,
+#ff00cc 96%
+),
+
+linear-gradient(
+0deg,
+transparent 95%,
+#00ffff 96%
+);
+
+
+background-size:
+
+40px 40px;
+
+
+opacity:0.25;
+
+
+z-index:-1;
+
+
 }
+
+
 </style>
 
 </head>
@@ -54,152 +247,144 @@ a {
 
 <body>
 
+
+<div class="grid"></div>
+
+
+
 <h1>
-🎵 Hitster<br>
-Italo Disco Classics
+
+🎵 HITSTER<br>
+
+ITALO DISCO CLASSICS
+
 </h1>
+
 
 
 <div class="card">
 
+
 <h2 id="title">
-Lade Karte...
+Karte laden...
 </h2>
 
 
 <a id="spotify" target="_blank">
+
 <button>
-▶️ Song öffnen
+
+▶ SONG STARTEN
+
 </button>
+
 </a>
 
 
-<br><br>
+
+<br>
 
 
 <button onclick="showAnswer()">
-Lösung anzeigen
+
+LÖSUNG ANZEIGEN
+
 </button>
+
 
 
 <div class="answer" id="answer">
 
+
 <h2 id="artist"></h2>
+
 <h3 id="song"></h3>
+
 <p id="year"></p>
 
-</div>
 
 </div>
+
+
+</div>
+
+
+
 
 
 <script>
 
+
 const cards = {
 
+
 "001":{
+
 artist:"Ryan Paris",
+
 song:"Dolce Vita",
+
 year:"1983",
+
 spotify:"https://open.spotify.com/track/1NTqkf5y9EQS97ctstfHkQ"
+
 },
+
 
 "002":{
+
 artist:"Gazebo",
+
 song:"I Like Chopin",
+
 year:"1983",
+
 spotify:"https://open.spotify.com/track/3XAOiZ7ccldPhPjrMiUKrG"
-},
 
-"003":{
-artist:"P. Lion",
-song:"Happy Children",
-year:"1984",
-spotify:"https://open.spotify.com/track/3v08BSV25yFn8u2xigYCHk"
-},
-
-"004":{
-artist:"Savage",
-song:"Don't Cry Tonight",
-year:"1983",
-spotify:"https://open.spotify.com/search/Savage%20Don't%20Cry%20Tonight"
-},
-
-"005":{
-artist:"Savage",
-song:"Only You",
-year:"1984",
-spotify:"https://open.spotify.com/search/Savage%20Only%20You"
-},
-
-"006":{
-artist:"Ken Laszlo",
-song:"Hey Hey Guy",
-year:"1984",
-spotify:"https://open.spotify.com/search/Ken%20Laszlo%20Hey%20Hey%20Guy"
-},
-
-"007":{
-artist:"Ken Laszlo",
-song:"Tonight",
-year:"1985",
-spotify:"https://open.spotify.com/search/Ken%20Laszlo%20Tonight"
-},
-
-"008":{
-artist:"Miko Mission",
-song:"How Old Are You?",
-year:"1984",
-spotify:"https://open.spotify.com/search/Miko%20Mission%20How%20Old%20Are%20You"
-},
-
-"009":{
-artist:"Baltimora",
-song:"Tarzan Boy",
-year:"1985",
-spotify:"https://open.spotify.com/search/Baltimora%20Tarzan%20Boy"
-},
-
-"010":{
-artist:"Righeira",
-song:"Vamos a la Playa",
-year:"1983",
-spotify:"https://open.spotify.com/search/Righeira%20Vamos%20a%20la%20Playa"
 }
 
 };
 
 
-let params=new URLSearchParams(window.location.search);
 
-let number=params.get("karte") || "001";
+let params =
+new URLSearchParams(window.location.search);
 
-let card=cards[number];
+
+let number =
+params.get("karte") || "001";
+
+
+let card =
+cards[number];
 
 
 if(card){
 
-document.getElementById("title").innerHTML=
-"Karte "+number;
+
+document.getElementById("title").innerHTML =
+"KARTE " + number;
 
 
-document.getElementById("artist").innerHTML=
+document.getElementById("artist").innerHTML =
 card.artist;
 
 
-document.getElementById("song").innerHTML=
+document.getElementById("song").innerHTML =
 card.song;
 
 
-document.getElementById("year").innerHTML=
+document.getElementById("year").innerHTML =
 card.year;
 
 
-document.getElementById("spotify").href=
+document.getElementById("spotify").href =
 card.spotify;
 
 
 }
+
+
 
 
 function showAnswer(){
@@ -209,7 +394,9 @@ document.getElementById("answer")
 
 }
 
+
 </script>
+
 
 
 </body>
