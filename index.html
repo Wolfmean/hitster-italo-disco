@@ -13,14 +13,21 @@
 
 
 * {
-    box-sizing:border-box;
+box-sizing:border-box;
+}
+
+
+html,body {
+
+margin:0;
+padding:0;
+
+min-height:100%;
+
 }
 
 
 body {
-
-margin:0;
-min-height:100vh;
 
 background:
 linear-gradient(
@@ -31,18 +38,19 @@ linear-gradient(
 
 color:white;
 
-font-family:'Orbitron', Arial, sans-serif;
+font-family:'Orbitron',Arial,sans-serif;
 
 text-align:center;
 
-overflow:hidden;
+overflow-x:hidden;
+overflow-y:auto;
 
 }
 
 
 /* Sterne */
 
-body:after {
+body:before {
 
 content:"";
 
@@ -66,21 +74,21 @@ z-index:-3;
 }
 
 
-/* Neon Sonne */
+/* Sonne */
 
 .sun {
 
 position:fixed;
 
-bottom:160px;
+bottom:170px;
 
 left:50%;
 
 transform:translateX(-50%);
 
-width:180px;
+width:150px;
 
-height:180px;
+height:150px;
 
 border-radius:50%;
 
@@ -96,26 +104,9 @@ linear-gradient(
 
 box-shadow:
 
-0 0 40px #ff00cc,
-0 0 80px #ff6600;
-
-
-animation:pulse 4s infinite alternate;
+0 0 40px #ff00cc;
 
 z-index:-2;
-
-}
-
-
-@keyframes pulse {
-
-from {
-opacity:.7;
-}
-
-to {
-opacity:1;
-}
 
 }
 
@@ -130,8 +121,7 @@ bottom:0;
 
 width:100%;
 
-height:180px;
-
+height:200px;
 
 background:
 
@@ -140,9 +130,9 @@ transparent,
 #ff0088
 );
 
-
 opacity:.35;
 
+z-index:-2;
 
 }
 
@@ -157,8 +147,7 @@ bottom:0;
 
 width:100%;
 
-height:130px;
-
+height:120px;
 
 background:
 
@@ -175,25 +164,25 @@ transparent 95%,
 );
 
 
-background-size:
+background-size:40px 40px;
 
-40px 40px;
+transform:
+perspective(300px)
+rotateX(60deg);
 
 
-transform:perspective(300px) rotateX(60deg);
+opacity:.35;
 
-
-opacity:.4;
-
+z-index:-1;
 
 }
 
 
-/* Titel */
+/* Überschrift */
 
 h1 {
 
-font-size:32px;
+font-size:30px;
 
 color:#ff4fd8;
 
@@ -202,11 +191,14 @@ text-shadow:
 0 0 10px #ff00cc,
 0 0 30px #00ffff;
 
+margin-top:30px;
 
 }
 
 
+
 /* Karte */
+
 
 .card {
 
@@ -214,14 +206,14 @@ width:350px;
 
 max-width:90%;
 
-margin:30px auto;
+margin:30px auto 80px;
 
-padding:30px;
+padding:25px;
 
 
 background:
 
-rgba(255,255,255,.10);
+rgba(255,255,255,.12);
 
 
 border:
@@ -237,14 +229,12 @@ box-shadow:
 0 0 25px #00ffff,
 0 0 40px #ff00cc;
 
-
-backdrop-filter:blur(8px);
-
-
 }
 
 
-/* Kartennummer */
+
+/* Nummer */
+
 
 .card-number {
 
@@ -256,29 +246,26 @@ border-radius:30px;
 
 border:2px solid #ffff00;
 
-
 color:#ffff00;
-
 
 box-shadow:
 
 0 0 15px #ffff00;
 
-
-margin-bottom:20px;
-
 }
+
 
 
 /* Platte */
 
+
 .record {
 
-width:130px;
+width:100px;
 
-height:130px;
+height:100px;
 
-margin:10px auto 25px;
+margin:20px auto;
 
 
 border-radius:50%;
@@ -297,7 +284,7 @@ circle,
 
 box-shadow:
 
-0 0 25px #00ffff;
+0 0 20px #00ffff;
 
 
 animation:
@@ -305,6 +292,7 @@ animation:
 spin 5s linear infinite;
 
 }
+
 
 
 @keyframes spin {
@@ -324,12 +312,13 @@ transform:rotate(360deg);
 }
 
 
+
 /* Buttons */
+
 
 button {
 
 font-family:'Orbitron';
-
 
 background:
 
@@ -342,17 +331,13 @@ linear-gradient(
 
 border:none;
 
-padding:15px 30px;
+padding:15px 25px;
 
-
-margin:12px;
-
+margin:15px 5px;
 
 border-radius:50px;
 
-
-font-size:16px;
-
+font-size:15px;
 
 cursor:pointer;
 
@@ -365,14 +350,17 @@ box-shadow:
 }
 
 
+
 button:hover {
 
-transform:scale(1.08);
+transform:scale(1.05);
 
 }
 
 
+
 /* Lösung */
+
 
 .answer {
 
@@ -386,15 +374,53 @@ border-top:
 
 1px solid #ff00cc;
 
-
 color:#ffff00;
 
+line-height:1.6;
+
+}
+
+
+
+/* Handy Anpassung */
+
+
+@media(max-width:600px){
+
+
+h1 {
+
+font-size:24px;
+
+}
+
+
+.card {
+
+padding:20px;
+
+}
+
+
+button {
+
+width:90%;
+
+}
+
+
+.record {
+
+width:90px;
+
+height:90px;
+
+}
 
 }
 
 
 </style>
-
 
 </head>
 
@@ -411,11 +437,8 @@ color:#ffff00;
 
 
 <h1>
-
 🎵 HITSTER<br>
-
 ITALO DISCO CLASSICS
-
 </h1>
 
 
@@ -424,19 +447,17 @@ ITALO DISCO CLASSICS
 
 
 <div class="card-number" id="number">
-
 CARD 001
-
 </div>
+
 
 
 <div class="record"></div>
 
 
+
 <h2 id="title">
-
-Song laden...
-
+RATE DEN SONG
 </h2>
 
 
@@ -444,21 +465,14 @@ Song laden...
 <a id="spotify" target="_blank">
 
 <button>
-
 🎧 SONG STARTEN
-
 </button>
 
 </a>
 
 
-<br>
-
-
 <button onclick="showAnswer()">
-
 💡 LÖSUNG ANZEIGEN
-
 </button>
 
 
@@ -471,11 +485,11 @@ Song laden...
 
 <p id="year"></p>
 
-
 </div>
 
 
 </div>
+
 
 
 
@@ -535,8 +549,8 @@ document.getElementById("number").innerHTML =
 "CARD "+number;
 
 
-document.getElementById("title").innerHTML =
-"🎵 RATE DEN SONG";
+document.getElementById("spotify").href =
+card.spotify;
 
 
 document.getElementById("artist").innerHTML =
@@ -551,20 +565,17 @@ document.getElementById("year").innerHTML =
 card.year;
 
 
-document.getElementById("spotify").href =
-card.spotify;
-
-
 }
+
 
 
 
 function showAnswer(){
 
-document.getElementById("answer")
-.style.display="block";
+document.getElementById("answer").style.display="block";
 
 }
+
 
 
 </script>
