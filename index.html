@@ -12,6 +12,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
 
 
+* {
+    box-sizing:border-box;
+}
+
+
 body {
 
 margin:0;
@@ -20,41 +25,166 @@ min-height:100vh;
 background:
 linear-gradient(
 180deg,
-#14002b 0%,
-#090022 45%,
-#02000d 100%
+#120022,
+#050010
 );
 
 color:white;
+
 font-family:'Orbitron', Arial, sans-serif;
+
 text-align:center;
 
-overflow-x:hidden;
+overflow:hidden;
 
 }
 
 
-/* Neon Sonnenuntergang */
+/* Sterne */
 
-body:before {
+body:after {
 
 content:"";
 
 position:fixed;
 
-bottom:0;
+top:0;
 left:0;
 
 width:100%;
-height:45%;
+height:100%;
 
 background:
+radial-gradient(circle,#ffffff55 1px,transparent 2px);
+
+background-size:60px 60px;
+
+opacity:.25;
+
+z-index:-3;
+
+}
+
+
+/* Neon Sonne */
+
+.sun {
+
+position:fixed;
+
+bottom:160px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:180px;
+
+height:180px;
+
+border-radius:50%;
+
+
+background:
+
 linear-gradient(
-transparent,
-rgba(255,0,180,0.25)
+#ffff00,
+#ff8800,
+#ff0088
 );
 
-z-index:-1;
+
+box-shadow:
+
+0 0 40px #ff00cc,
+0 0 80px #ff6600;
+
+
+animation:pulse 4s infinite alternate;
+
+z-index:-2;
+
+}
+
+
+@keyframes pulse {
+
+from {
+opacity:.7;
+}
+
+to {
+opacity:1;
+}
+
+}
+
+
+/* Horizont */
+
+.horizon {
+
+position:fixed;
+
+bottom:0;
+
+width:100%;
+
+height:180px;
+
+
+background:
+
+linear-gradient(
+transparent,
+#ff0088
+);
+
+
+opacity:.35;
+
+
+}
+
+
+/* Raster */
+
+.grid {
+
+position:fixed;
+
+bottom:0;
+
+width:100%;
+
+height:130px;
+
+
+background:
+
+linear-gradient(
+90deg,
+transparent 95%,
+#00ffff 96%
+),
+
+linear-gradient(
+0deg,
+transparent 95%,
+#ff00cc 96%
+);
+
+
+background-size:
+
+40px 40px;
+
+
+transform:perspective(300px) rotateX(60deg);
+
+
+opacity:.4;
+
 
 }
 
@@ -69,57 +199,137 @@ color:#ff4fd8;
 
 text-shadow:
 
-0 0 5px #ff4fd8,
-0 0 15px #ff4fd8,
+0 0 10px #ff00cc,
 0 0 30px #00ffff;
+
 
 }
 
 
 /* Karte */
 
-
 .card {
 
-width:330px;
+width:350px;
 
-margin:40px auto;
+max-width:90%;
+
+margin:30px auto;
 
 padding:30px;
-
-border-radius:25px;
 
 
 background:
 
-linear-gradient(
-135deg,
-rgba(255,255,255,0.12),
-rgba(255,255,255,0.03)
-);
+rgba(255,255,255,.10);
 
 
-border:2px solid #00ffff;
+border:
+
+2px solid #00ffff;
+
+
+border-radius:25px;
 
 
 box-shadow:
 
-0 0 15px #00ffff,
-0 0 35px #ff00cc;
+0 0 25px #00ffff,
+0 0 40px #ff00cc;
 
 
-backdrop-filter:blur(10px);
+backdrop-filter:blur(8px);
 
 
 }
 
 
-/* Neon Buttons */
+/* Kartennummer */
 
+.card-number {
+
+display:inline-block;
+
+padding:10px 25px;
+
+border-radius:30px;
+
+border:2px solid #ffff00;
+
+
+color:#ffff00;
+
+
+box-shadow:
+
+0 0 15px #ffff00;
+
+
+margin-bottom:20px;
+
+}
+
+
+/* Platte */
+
+.record {
+
+width:130px;
+
+height:130px;
+
+margin:10px auto 25px;
+
+
+border-radius:50%;
+
+
+background:
+
+radial-gradient(
+circle,
+#ff00cc 0%,
+#111 12%,
+#000 60%,
+#222 100%
+);
+
+
+box-shadow:
+
+0 0 25px #00ffff;
+
+
+animation:
+
+spin 5s linear infinite;
+
+}
+
+
+@keyframes spin {
+
+from {
+
+transform:rotate(0deg);
+
+}
+
+to {
+
+transform:rotate(360deg);
+
+}
+
+}
+
+
+/* Buttons */
 
 button {
 
 font-family:'Orbitron';
+
 
 background:
 
@@ -129,26 +339,30 @@ linear-gradient(
 #ff00cc
 );
 
+
 border:none;
 
-padding:15px 25px;
+padding:15px 30px;
 
-margin:12px 0;
+
+margin:12px;
+
 
 border-radius:50px;
 
+
 font-size:16px;
+
 
 cursor:pointer;
 
+
 box-shadow:
 
-0 0 15px #00ffff;
+0 0 20px #00ffff;
 
-display:inline-block;
 
 }
-
 
 
 button:hover {
@@ -158,23 +372,7 @@ transform:scale(1.08);
 }
 
 
-
-/* Spotify */
-
-.spotify {
-
-
-display:inline-block;
-
-margin:20px;
-
-
-}
-
-
-
 /* Lösung */
-
 
 .answer {
 
@@ -182,11 +380,11 @@ display:none;
 
 margin-top:25px;
 
+padding-top:20px;
+
 border-top:
 
 1px solid #ff00cc;
-
-padding-top:20px;
 
 
 color:#ffff00;
@@ -195,60 +393,18 @@ color:#ffff00;
 }
 
 
-
-/* Retro Grid */
-
-
-.grid {
-
-
-position:fixed;
-
-bottom:0;
-
-left:0;
-
-width:100%;
-
-height:120px;
-
-
-background:
-
-linear-gradient(
-90deg,
-transparent 95%,
-#ff00cc 96%
-),
-
-linear-gradient(
-0deg,
-transparent 95%,
-#00ffff 96%
-);
-
-
-background-size:
-
-40px 40px;
-
-
-opacity:0.25;
-
-
-z-index:-1;
-
-
-}
-
-
 </style>
+
 
 </head>
 
 
 <body>
 
+
+<div class="sun"></div>
+
+<div class="horizon"></div>
 
 <div class="grid"></div>
 
@@ -267,32 +423,47 @@ ITALO DISCO CLASSICS
 <div class="card">
 
 
+<div class="card-number" id="number">
+
+CARD 001
+
+</div>
+
+
+<div class="record"></div>
+
+
 <h2 id="title">
-Karte laden...
+
+Song laden...
+
 </h2>
+
 
 
 <a id="spotify" target="_blank">
 
 <button>
+
 🎧 SONG STARTEN
+
 </button>
 
 </a>
-
 
 
 <br>
 
 
 <button onclick="showAnswer()">
+
 💡 LÖSUNG ANZEIGEN
+
 </button>
 
 
 
 <div class="answer" id="answer">
-
 
 <h2 id="artist"></h2>
 
@@ -305,8 +476,6 @@ Karte laden...
 
 
 </div>
-
-
 
 
 
@@ -341,6 +510,7 @@ spotify:"https://open.spotify.com/track/3XAOiZ7ccldPhPjrMiUKrG"
 
 }
 
+
 };
 
 
@@ -357,11 +527,16 @@ let card =
 cards[number];
 
 
+
 if(card){
 
 
+document.getElementById("number").innerHTML =
+"CARD "+number;
+
+
 document.getElementById("title").innerHTML =
-"KARTE " + number;
+"🎵 RATE DEN SONG";
 
 
 document.getElementById("artist").innerHTML =
@@ -384,7 +559,6 @@ card.spotify;
 
 
 
-
 function showAnswer(){
 
 document.getElementById("answer")
@@ -396,6 +570,6 @@ document.getElementById("answer")
 </script>
 
 
-
 </body>
+
 </html>
